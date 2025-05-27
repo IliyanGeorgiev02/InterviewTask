@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crypto Trading Platform | Live Prices</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+<header>
+    <h1>Top 20 Cryptocurrency Prices (Live)</h1>
+    <div class="user-info">
+        <p>Welcome, <a th:href="@{/profile}"><strong th:text="${username}"></strong></a></p>
+        <p>Balance: <strong id="user-balance" th:text="${#numbers.formatDecimal(balance, 0, 2)}"></strong> USD</p>
+        <input type="hidden" id="hidden-user-balance" th:value="${#numbers.formatDecimal(balance, 0, 2)}">
+        <a th:href="@{/logout}" class="logout-button">Logout</a>
+    </div>
+</header>
+<main>
+    <div th:if="${error}" class="error-message">
+        <p th:text="${error}"></p>
+    </div>
+    <table id="crypto-table">
+        <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Current Price (USD)</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody id="crypto-body">
+        </tbody>
+    </table>
+</main>
+
+<script src="/css/js/prices.js"></script>
+</body>
+</html>

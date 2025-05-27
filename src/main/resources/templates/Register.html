@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register | Crypto Simulator</title>
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+<div class="auth-container">
+    <h2>Register</h2>
+    <form th:action="@{/register}" th:method="post" th:object="${registerData}">
+        <input type="text" name="username" placeholder="Username" required><br>
+        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></div><br>
+        <input type="text" name="firstName" placeholder="FirstName" required><br>
+        <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"></div><br>
+        <input type="text" name="lastName" placeholder="LastName" required><br>
+        <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"></div><br>
+        <input type="text" name="email" placeholder="Email" required><br>
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></div><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></div><br>
+        <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a th:href="@{/login}">Login here</a></p>
+</div>
+</body>
+</html>

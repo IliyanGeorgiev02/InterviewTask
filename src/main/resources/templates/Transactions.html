@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Transactions</title>
+    <link rel="stylesheet" href="/css/transactions.css">
+</head>
+<body>
+
+<header>
+    <h1>Your Transaction History</h1>
+    <div class="user-info">
+        <p>Welcome, <strong th:text="${username}"></strong></p>
+        <a th:href="@{/home}" class="logout-button">Back to Prices</a>
+        <a th:href="@{/profile}" class="logout-button">Back to Profile</a>
+    </div>
+</header>
+
+<main>
+    <h2>All Your Transactions</h2>
+
+    <table class="transaction-table">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Symbol</th>
+            <th>Amount</th>
+            <th>Price Per Coin</th>
+            <th>Total Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="transaction : ${transactions}">
+            <td th:text="${#temporals.format(transaction.dateTime, 'yyyy-MM-dd')}"></td>
+            <td th:class="${transaction.type == 'BUY' ? 'buy' : 'sell'}" th:text="${transaction.type}"></td>
+            <td th:text="${transaction.symbol}"></td>
+            <td th:text="${#numbers.formatDecimal(transaction.amount, 1, 0)}"></td>
+            <td th:text="${#numbers.formatCurrency(transaction.price)}"></td>
+            <td th:text="${#numbers.formatCurrency(transaction.totalPrice)}"></td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(transactions)}">
+            <td colspan="5">No transactions found yet.</td> </tr>
+        </tbody>
+    </table>
+</main>
+
+</body>
+</html>

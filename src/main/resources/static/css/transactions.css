@@ -1,0 +1,153 @@
+/* General Body and Container Styles */
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 20px; /* Add padding similar to profile body */
+    background-color: #121212; /* Dark background from profile */
+    color: #f0f0f0; /* Light text color from profile */
+    line-height: 1.6;
+}
+
+/* Header Styles */
+/* Assuming header styles are shared via home.css or defined globally in profile.css/common.css */
+/* If not, uncomment and adjust to match your profile header exact styles */
+header {
+    text-align: center; /* From profile header */
+    margin-bottom: 30px; /* From profile header */
+    /* If your header background/color is NOT defined globally, add it here */
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+     padding: 15px 20px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    color: #00d1b2; /* Accent color from profile */
+    font-size: 1.8em;
+    margin: 0;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center user info as in profile header */
+    gap: 15px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    margin-top: 10px; /* Space from h1 */
+}
+
+.user-info p {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.user-info strong {
+    color: #ffc107; /* Keeping gold accent for username, as it's common */
+}
+
+/* Navigation/Action Buttons in Header */
+.logout-button, .transactions-button { /* Applied to both button types for consistency */
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button {
+    background-color: #e63946; /* Red from profile logout */
+}
+
+.logout-button:hover {
+    background-color: #d62828; /* Darker red from profile logout */
+}
+
+/* If you have a .transactions-button on this page's header */
+.transactions-button {
+    background-color: dimgray; /* From profile */
+}
+
+.transactions-button:hover {
+    background-color: darkgray; /* From profile */
+}
+
+
+/* Main Content Area */
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #1e1e1e; /* Darker background for table/main content from profile */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Slightly stronger shadow for dark theme */
+}
+
+main h2 {
+    font-size: 2em;
+    color: #00d1b2; /* Accent color for main heading */
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #333; /* Darker border from profile */
+    padding-bottom: 10px;
+}
+
+/* Transaction Table Styles */
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 0.95em;
+    background-color: #1e1e1e; /* Match main container background */
+}
+
+.transaction-table thead th {
+    background-color: #222; /* Darker gray for table header from profile */
+    color: #f0f0f0; /* Light text */
+    padding: 15px;
+    text-align: center; /* Center align headers as in profile */
+    border-bottom: 1px solid #333; /* Border from profile */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.transaction-table tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #333; /* Border from profile */
+    text-align: center; /* Center align table cells as in profile */
+    color: #f0f0f0; /* Default text color */
+}
+
+.transaction-table tbody tr:nth-child(even) {
+    background-color: #1e1e1e; /* Keep the background consistent or slightly different dark shade */
+}
+
+.transaction-table tbody tr:hover {
+    background-color: #2a2a2a; /* Hover background from profile */
+    transition: background-color 0.2s ease;
+}
+
+/* Specific Transaction Type Styling */
+.transaction-table .buy {
+    color: #27ae60; /* Green for BUY - keeping this, or could be #00d1b2 if you want it to match accent */
+    font-weight: bold;
+}
+
+.transaction-table .sell {
+    color: #e63946; /* Red from profile's sell button/logout button for consistency */
+    font-weight: bold;
+}
+
+/* Empty Transactions Message */
+.transaction-table tbody tr:last-child td[colspan="5"] { /* Adjusted colspan from 6 to 5 */
+    text-align: center;
+    padding: 20px;
+    color: #7f8c8d; /* Muted grey for empty message */
+    font-style: italic;
+    background-color: #1e1e1e; /* Match table background */
+}
