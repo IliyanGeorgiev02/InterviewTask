@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="/css/home.css">
+
+  <script th:inline="javascript">
+      /*<![CDATA[*/
+      // This will create a global JavaScript array from your backend model
+      const userHoldingsSymbols = /*[[${holdingSymbols}]]*/ [];
+      /*]]>*/
+  </script>
+  <script src="/css/js/profilePrices.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>Profile</h1>
+  <div class="user-info">
+    <p>Welcome, <strong th:text="${username}"></strong></p>
+    <a th:href="@{/home}" class="logout-button">Back to Prices</a>
+    <a th:href="@{/transactions}" class="logout-button">View Transactions</a>
+    <a href="#" class="logout-button" onclick="confirmReset()">Reset Account</a>
+  </div>
+</header>
+
+<main>
+  <h2>Your Holdings</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Amount</th>
+      <th>Live Price Per Coin</th>
+      <th>Amount to sell</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="holding : ${holdings}">
+      <td th:text="${holding.symbol}"></td>
+      <td th:id="'holdingAmount-' + ${holding.symbol}"
+          th:text="${#numbers.formatDecimal(holding.amount, 1, 0)}"></td>
+      <td th:id="'price-' + ${holding.symbol}">$0.00</td>
+      <td>
+        <input type="number"
+               th:id="'amountToSell-' + ${holding.symbol}"
+               placeholder="Amount to sell"
+               min="1" step="1">
+      </td>
+      <td>
+        <button type="button"
+                class="sell-button"
+                th:attr="onclick='sellCrypto(&quot;' + ${holding.symbol} + '&quot;)'">Sell</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</main>
+</body>
+</html>
